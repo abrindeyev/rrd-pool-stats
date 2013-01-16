@@ -23,7 +23,7 @@ RRD.graph(
            "DEF:cleanup=#{hostname}.rrd:cleanup:AVERAGE",
            "DEF:leased=#{hostname}.rrd:leased:AVERAGE",
            "DEF:ready=#{hostname}.rrd:ready:AVERAGE",
-           "CDEF:total=cleanup,leased,+,ready,+",
-           "CDEF:utilization=cleanup,leased,+,total,/",
-           "AREA:utilization#FF0000:'Utilization'"
+           "AREA:leased#FF0000:'Leased'",
+           "STACK:cleanup#00FF00:'Cleaning up'",
+           "STACK:ready#0000FF:'Ready'"
 )
