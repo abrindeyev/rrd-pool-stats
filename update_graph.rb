@@ -20,6 +20,7 @@ RRD.graph(
            "--start", now - 60*60,
            "--end", now,
            "--vertical-label", "VMs",
+           "--lower-limit", 0,
            "DEF:cleanup=#{hostname}.rrd:cleanup:AVERAGE",
            "DEF:leased=#{hostname}.rrd:leased:AVERAGE",
            "DEF:ready=#{hostname}.rrd:ready:AVERAGE",
