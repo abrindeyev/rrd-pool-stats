@@ -16,8 +16,36 @@ pool_map = {
 now = Time.now.to_i
 
 RRD.graph(
-           "#{hostname}_last_hour.png",
+           "last_hour.png",
            "--start", now - 60*60,
+           "--end", now,
+           "--vertical-label", "VMs",
+           "--lower-limit", 0,
+           "DEF:cleanup=#{hostname}.rrd:cleanup:AVERAGE",
+           "DEF:leased=#{hostname}.rrd:leased:AVERAGE",
+           "DEF:ready=#{hostname}.rrd:ready:AVERAGE",
+           "AREA:leased#FF0000:'Leased'",
+           "STACK:cleanup#0000FF:'Cleaning up'",
+           "STACK:ready#00FF00:'Ready'"
+)
+
+RRD.graph(
+           "last_day.png",
+           "--start", now - 24*60*60,
+           "--end", now,
+           "--vertical-label", "VMs",
+           "--lower-limit", 0,
+           "DEF:cleanup=#{hostname}.rrd:cleanup:AVERAGE",
+           "DEF:leased=#{hostname}.rrd:leased:AVERAGE",
+           "DEF:ready=#{hostname}.rrd:ready:AVERAGE",
+           "AREA:leased#FF0000:'Leased'",
+           "STACK:cleanup#0000FF:'Cleaning up'",
+           "STACK:ready#00FF00:'Ready'"
+)
+
+RRD.graph(
+           "last_week.png",
+           "--start", now - 7*24*60*60,
            "--end", now,
            "--vertical-label", "VMs",
            "--lower-limit", 0,
