@@ -17,6 +17,7 @@ now = Time.now.to_i
 
 RRD.graph(
            "last_hour.png",
+           "-w", 1280, "-h", 300,
            "--start", now - 60*60,
            "--end", now,
            "--title", "Last hour",
@@ -32,6 +33,7 @@ RRD.graph(
 
 RRD.graph(
            "last_day.png",
+           "-w", 1280, "-h", 300,
            "--start", now - 24*60*60,
            "--end", now,
            "--title", "Last day",
@@ -47,6 +49,7 @@ RRD.graph(
 
 RRD.graph(
            "last_week.png",
+           "-w", 1280, "-h", 300,
            "--start", now - 7*24*60*60,
            "--end", now,
            "--title", "Last week",
@@ -62,6 +65,7 @@ RRD.graph(
 
 RRD.graph(
            "last_month.png",
+           "-w", 1280, "-h", 300,
            "--start", now - 31*24*60*60,
            "--end", now,
            "--title", "Last month",
