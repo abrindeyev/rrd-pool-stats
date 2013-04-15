@@ -49,7 +49,7 @@ values = Hash.new;
 pool_map.keys.map{|val| values[val] = 0 }
 
 if pool_stats['status'] == 'success'
-  pool_stats['result']['nodes'].map { |s| values[ pool_map.invert[ s['status'] ] ] += 1 }
+  pool_stats['result']['nodes'].map { |s| values[ pool_map.invert[ s['status'] ] ] += 1 if values.include?(pool_map.invert[ s['status'] ]) }
 end
 
 template_ds = pool_map.keys
